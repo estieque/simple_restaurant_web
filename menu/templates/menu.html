@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+        
+<!--Menu Page SEO Data-->
+<!--Menu Page Meta Title-->
+{% block titles %}
+{% for menuseo in menuseo %}
+{{menuseo.title}}
+{% endfor %}
+{% endblock titles %}
+<!--Menu Page Meta Title-->
+
+<!--Menu Page Meta Descriptions-->
+{% block meta_description %}
+{% for menuseo in menuseo %}
+{{menuseo.meta_description}}
+{% endfor %}
+{% endblock meta_description %}
+<!--Menu Page Meta Descriptions-->
+
+<!--Menu Page Meta Keywords-->
+{% block meta_keyword %}
+{% for menuseo in menuseo %}
+{{menuseo.meta_keyword}}
+{% endfor %}
+{% endblock meta_keyword %}
+<!--Menu Page Meta Keywords-->
+
+{% block menucontent %}
+        <main>
+            <!--Breadcrumbs Area-->
+            {% for menuslider in menuslider %}
+            <header class="site-header site-menu-header" style="background-image: url('{{menuslider.image.url}}');">
+                {% endfor %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <h1 class="text-white">Our Menus</h1>
+
+                            <strong class="text-white">Perfect for all Breakfast, Lunch and Dinner</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay"></div>
+            </header>
+            <!--Menu Section Start-->
+            <section class="menu section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="mb-lg-5 mb-4">Breakfast Menu</h2>
+                        </div>
+                        {% for break in breakfast %}
+                        <div class="col-lg-4 col-md-6 col-12">
+                            
+                            <div class="menu-thumb">
+                                <img src="{{break.image.url}}" class="img-fluid menu-image" alt="">
+
+                                <div class="menu-info d-flex flex-wrap align-items-center">
+                                    <h4 class="mb-0">{{break.title}}</h4>
+
+                                    <span class="price-tag bg-white shadow-lg ms-4"><small>$</small>{{break.price}}</span>
+
+                                    <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                        <h6 class="reviews-text mb-0 me-3">{{break.ratings}}</h6>
+
+                                        <div class="reviews-stars">
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star reviews-icon"></i>
+                                        </div>
+                                        <p class="reviews-text mb-0 ms-4">{{break.total_reviews}} Reviews</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu section-padding bg-white">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2 class="mb-lg-5 mb-4">Lunch Menu</h2>
+                        </div>
+                        {% for lnch in launch %}
+                        <div class="col-lg-6 col-12">
+                            <div class="menu-thumb">
+                                <img src="{{lnch.image.url}}" class="img-fluid menu-image" alt="">
+
+                                <div class="menu-info d-flex flex-wrap align-items-center">
+                                    <h4 class="mb-0">{{lnch.title}}</h4>
+                                    <span class="price-tag bg-white shadow-lg ms-4"><small>$</small>{{lnch.price}}</span>
+                                    <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                        <h6 class="reviews-text mb-0 me-3">{{lnch.ratings}}</h6>
+
+                                        <div class="reviews-stars">
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star reviews-icon"></i>
+                                        </div>
+
+                                        <p class="reviews-text mb-0 ms-4">{{lnch.total_reviews}} Reviews</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2 class="mb-lg-5 mb-4">Dinner Menu</h2>
+                        </div>
+                        {% for dinn in dinner %}
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="menu-thumb">
+                                <img src="{{dinn.image.url}}" class="img-fluid menu-image" alt="">
+
+                                <div class="menu-info d-flex flex-wrap align-items-center">
+                                    <h4 class="mb-0">{{dinn.title}}</h4>
+
+                                    <span class="price-tag bg-white shadow-lg ms-4"><small>$</small>{{dinn.price}}</span>
+
+                                    <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                        <h6 class="reviews-text mb-0 me-3">{{dinn.ratings}}</h6>
+
+                                        <div class="reviews-stars">
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star reviews-icon"></i>
+                                        </div>
+
+                                        <p class="reviews-text mb-0 ms-4">{{dinn.total_reviews}} Reviews</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% endblock menucontent %}

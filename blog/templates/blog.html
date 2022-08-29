@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+   
+<!--About Page SEO Data-->
+<!--About Page Meta Title-->
+{% block titles %}
+{% for blseo in blogseo %}
+{{blseo.title}}
+{% endfor %}
+{% endblock titles %}
+<!--About Page Meta Title-->
+
+<!--About Page Meta Descriptions-->
+{% block meta_description %}
+{% for blseo in blogseo %}
+{{blseo.meta_description}}	
+{% endfor %}
+{% endblock meta_description %}
+<!--About Page Meta Descriptions-->
+
+<!--About Page Meta Keywords-->
+{% block meta_keyword %}
+{% for blseo in blogseo %}
+{{blseo.meta_keyword}}
+{% endfor %}
+{% endblock meta_keyword %}
+<!--About Page Meta Keywords-->
+
+{% block blogcontent %}
+
+        <main>
+        {% for blogslider in blogslider %}
+            <header class="site-header site-news-header" style="background-image: url('{{blogslider.image.url}}');">
+                {% endfor %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <h1 class="text-white">News &amp; Blogs</h1>
+                            <strong class="text-white">our latest updates, news, events and special promotions</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay"></div>
+
+            </header>
+            <!--Latest Update Area-->
+            <section class="news section-padding bg-white">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="mb-lg-5 mb-4">Latest Updates</h2>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            {% for hblogs in homeblogs %}
+                            <div class="news-thumb mb-4">
+                                <a href="{% url 'blog_detail' hblogs.slug %}">
+                                    <img src="{{hblogs.image.url}}" class="img-fluid news-image" alt="">
+                                </a>
+                                
+                                <div class="news-text-info news-text-info-large">
+                                    <span class="category-tag bg-danger">{{hblogs.cat.title}}</span>
+
+                                    <h5 class="news-title mt-2">
+                                        <a href="{% url 'blog_detail' hblogs.slug %}" class="news-title-link">{{hblogs.title}}</a>
+                                    </h5>
+                                </div>
+                            </div> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--All Blogs Area-->
+            <section class="news section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="mb-lg-5 mb-4">News &amp; Blogs</h2>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            {% for blogs in blogs %}
+                            <div class="news-thumb mb-4">
+                                <a href="{% url 'blog_detail' blogs.slug %}">
+                                    <img src="{{blogs.image.url}}" class="img-fluid news-image" alt="">
+                                </a>
+                                
+                                <div class="news-text-info">
+                                    <span class="category-tag me-3 bg-info">{{blogs.cat.title}}</span>
+
+                                    <strong>{{blogs.add_date}}</strong>
+
+                                    <h5 class="news-title mt-2">
+                                        <a href="{% url 'blog_detail' blogs.slug %}" class="news-title-link">{{blogs.title}}</a>
+                                    </h5>
+                                </div>
+                            </div> 
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+{% endblock %}

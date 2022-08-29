@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+        
+<!--Blog Details SEO Informations-->
+{% block titles %}
+{{blogd.title}}-{{settings.title}}
+{% endblock titles %}
+
+
+{% block meta_description %}
+{{blogd.meta_description}}
+{% endblock meta_description %}
+
+
+{% block meta_keyword %}
+{{blogd.meta_tags}}
+{% endblock meta_keyword %}
+<!--Blog Details SEO Informations-->
+
+{% block blogdetails %}
+        <main>
+            <header class="site-header site-news-detail-header">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2>{{blogd.title}}</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+<!--Blog Details-->
+            <section class="news-detail section-padding pt-0">
+                <div class="container">
+                    <div class="row">
+                        <img src="{{blogd.image.url}}" class="img-fluid news-detail-image" style="height:40%; width:80%;"alt="fine dining experience">
+                        <div class="col-lg-12 col-12">
+                            <div class="col-lg-10 col-10 mx-auto mt-5">
+
+                                <p>{{blogd.content | safe }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<!--Comments Area-->
+            <section class="comments section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-center mb-4">Comment Box</h4>
+                        </div>
+
+                        <div class="col-lg-7 col-12 mx-auto">
+                            <form class="custom-form comment-form" action="{% url 'blog_detail' blogd.slug %}" method="POST" role="form">
+                                {% csrf_token %}
+                            	
+                                <input type="text" name="Name" id="comment-name" class="form-control" placeholder="Your Name">
+                                
+                                <input type="email" name="Email" id="comment-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Your Email" >
+                            
+                                <textarea class="form-control" rows="5" id="comment" name="Content" placeholder="Write a comment" ></textarea>
+
+                                <div class="col-lg-3 col-4 mx-auto">
+                                    <button type="submit" class="form-control" id="subscribe">Submit</button>
+                                </div>
+                            </form>
+                            <!--Comments Showing Area-->
+                            <div class="news-author d-flex flex-wrap align-items-center">
+                                <img src="images/author/alexander-hipp-iEEBWgY_6lA-unsplash.jpg" class="img-fluid news-author-image" alt="">
+
+                                <div class="ms-4 w-50">
+                                    <p class="mb-2">Donec pharetra tellus nulla, aliquam elementum lorem hendrerit non.</p>
+                                    
+                                    <a href="#">David Martin</a>
+                                </div>
+
+                                <span class="ms-auto">14 hours ago</span>
+                            </div>
+
+                            <div class="news-author d-flex flex-wrap align-items-center">
+                                <img src="images/author/shoeib-abolhassani-ojl7T2Ah93U-unsplash.jpg" class="img-fluid news-author-image" alt="">
+
+                                <div class="ms-4 w-50">
+                                    <p class="mb-2">Quisque non libero ut mauris fermentum efficitur ac ut nibh.</p>
+                                    
+                                    <a href="#">Jessica Noel</a>
+                                </div>
+
+                                <span class="ms-auto">3 days ago</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--Recent Blogs Area-->
+            <section class="related-news section-padding bg-white">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="text-center mb-lg-5 mb-4">Recent News</h2>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            {% for hblogs in homeblogs %}
+                            <div class="news-thumb mb-4">
+                                <a href="{% url 'blog_detail' hblogs.slug %}">
+                                    <img src="{{hblogs.image.url}}" class="img-fluid news-image" alt="">
+                                </a>
+                                
+                                <div class="news-text-info">
+                                    <span class="category-tag me-3 bg-info">{{hblogs.cat.title}}</span>
+
+                                    <strong>{{hblogs.add_date}}</strong>
+
+                                    <h5 class="news-title mt-2">
+                                        <a href="{% url 'blog_detail' hblogs.slug %}" class="news-title-link">{{hblogs.title}}</a>
+                                    </h5>
+                                </div>
+                            </div> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+{% endblock %}
