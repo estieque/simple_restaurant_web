@@ -28,5 +28,6 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     path('reservedone/',include('reservation.urls')),
     path('contact-us/',include('contact.urls')),
-    path('about/', include('about.urls'))
+    path('about/', include('about.urls')),
+    path('api/about/', include('about.api.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

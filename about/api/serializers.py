@@ -1,7 +1,7 @@
 from dataclasses import fields
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-
+from rest_framework.serializers import ModelSerializer
 from about.models import TeamMember
 
 
@@ -22,3 +22,10 @@ class TeamMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model= TeamMember
         fields = ['team_id', 'name', 'phone', 'email', 'image', 'designation',]
+        
+        
+        
+class DeleteTeamMemberSerializer(ModelSerializer):
+    class Meta:
+        model = TeamMember
+        fields = "__all__"

@@ -6,7 +6,7 @@ from rest_framework import viewsets
 
 from seo.models import AboutPage
 from sliders.models import storySlider
-from .serializers import TeamMemberSerializer
+#from .serializers import TeamMemberSerializer
 from .models import AboutContent, TeamMember
 import requests
 # Create your views here.
