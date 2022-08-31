@@ -1,8 +1,7 @@
 from dataclasses import fields
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
-from about.models import TeamMember
+from about.models import AboutContent, TeamMember
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,7 +24,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
         
         
 
-class DeleteTeamMemberSerializer(ModelSerializer):
+class AboutContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TeamMember
-        fields = "__all__"
+        model = AboutContent
+        fields = ['content_id', 'small_description', 'content',]
