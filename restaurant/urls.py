@@ -29,6 +29,7 @@ urlpatterns = [
     path('reservedone/',include('reservation.urls')),
     path('contact-us/',include('contact.urls')),
     path('about/', include('about.urls')),
-    #path('api/about/', include('about.api.urls')),
+#api urls Start from here
     path('api/about/', include('about.api.urls')),
+    path('api/contact/', include('contact.api.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
