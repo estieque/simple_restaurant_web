@@ -21,10 +21,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class TeamMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model= TeamMember
-        fields = ['team_id', 'name', 'phone', 'email', 'image', 'designation',]
+        fields = ['team_id', 'name', 'phone', 'email', 'image', 'designation', 'add_date',]
         
         
-        
+
 class DeleteTeamMemberSerializer(ModelSerializer):
     class Meta:
         model = TeamMember
