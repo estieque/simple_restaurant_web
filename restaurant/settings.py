@@ -157,7 +157,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         
-    ]
+    ],
+    
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer', #JSON Renderer will be active When we move from develpoing to live Server
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        ]
 }
 
 
