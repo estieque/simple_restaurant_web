@@ -33,4 +33,5 @@ urlpatterns = [
     path('api/about/', include('about.api.urls')),
     path('api/contact/', include('contact.api.urls')),
     path('api/emailsub/', include('emailsubs.api.urls')),
+    path('api/menus/', include('menu.api.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
